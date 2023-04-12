@@ -1,0 +1,56 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.NotFound {
+	width: 100vw;
+	height: 100vh;
+	position: relative;
+}
+
+.NotFound__Video {
+	position: absolute;
+	z-index: -1;
+	width: 100%;
+	top: calc(50% - #{ratio(45)});
+	@include tabletP {
+		width: 200%;
+		left: -50%;
+		top: ratioM(12);
+	}
+}
+
+.NotFound__Bottom {
+	position: absolute;
+	// height: ratio(20);
+	height: 22vh;
+	bottom: ratio(4);
+	width: 100%;
+	z-index: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	@include tabletP {
+		height: 30vh;
+		bottom: ratioM(4);
+	}
+}
+
+.NotFound__Text {
+	font-family: $titleFont;
+	color: #9099b1;
+	text-transform: uppercase;
+	letter-spacing: 0.5em;
+	text-align: center;
+	line-height: 1.75;
+	font-size: ratio(0.9);
+	@include tabletP {
+		font-size: ratioM(1.2);
+		width: colsM(5);
+	}
+}
+
+.NotFound__Button {
+	justify-self: center;
+	margin-top: auto;
+	margin-bottom: auto;
+}

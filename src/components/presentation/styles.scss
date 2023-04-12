@@ -1,0 +1,926 @@
+	@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+/*
+* Reusables
+*/
+
+.Presentation__Section {
+	position: relative;
+	margin-bottom: ratio(22);
+	@include tabletP {
+		margin-bottom: ratioM(16);
+	}
+	@include large {
+		margin-bottom: ratioL(22);
+		width: colsL(12);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.Presentation__Dots {
+	position: absolute;
+	top: 0;
+	right: cols(1);
+	width: 0;
+	transform-origin: top left;
+	transform: rotate(90deg);
+	color: $paleSky;
+	font-family: $titleFont;
+	font-size: ratio(0.9);
+	line-height: ratio(1.8);
+	letter-spacing: 0.4em;
+	text-transform: uppercase;
+	@include large {
+		right: 0;
+		top: 0;
+		font-size: ratioL(0.9);
+		line-height: ratioL(1.8);
+	}
+	.Presentation__DotsLine {
+		display: block;
+		white-space: nowrap;
+	}
+	.Presentation__DotsLine:first-child {
+		position: relative;
+		padding-left: ratio(1.9);
+		&:before {
+			position: absolute;
+			content: '';
+			background-color: $pomegranate;
+			width: ratio(0.8);
+			height: ratio(0.8);
+			left: 0;
+			top: ratio(0.3);
+			opacity: 0;
+			transform: rotate(-270deg);
+			@include large {
+				width: ratioL(0.8);
+				height: ratioL(0.8);
+				top: ratioL(0.3)
+			}
+		}
+		@include large {
+			padding-left: ratioL(1.9);
+		}
+	}
+	&.is-inview {
+		.Presentation__DotsLine:first-child:before {
+			transform: rotate(0deg);
+			opacity: 1;
+			transition: opacity 2s $bezier2 0.5s, transform 2s $bezier2 0.5s;
+			animation: flickerDot 1s linear 0.5s forwards;
+		}
+	}
+	&--Left {
+		right: auto;
+		left: cols(1) + ratio(3);
+		@include large {
+			left: ratioL(3);
+		}
+	}
+	&--Normal {
+		position: relative;
+		top: auto;
+		left: auto;
+		right: auto;
+		width: auto;
+		transform: none;
+		letter-spacing: 0.2em;
+		.Presentation__DotsLine {
+			display: inline-block;
+			span {
+				opacity: 0;
+			}
+			&:first-child:before {
+				z-index: 2;
+				top: ratio(0.4);
+				transform: translate3d(ratio(8), 0, 0) rotate(-270deg);
+				@include large {
+					top: ratioL(0.4);
+				}
+			}
+		}
+		&.is-inview {
+			.Presentation__DotsLine span {
+				opacity: 1;
+				transition: opacity 0.3s $bezier 1s;
+			}
+			.Presentation__DotsLine:first-child:before {
+				transform: translate3d(0, 0, 0) rotate(0deg);
+				transition: opacity 2s $bezier2 0s, transform 2s $bezier2 0s;
+			}
+		}
+	}
+	@include tabletP {
+		display: none;
+	}
+}
+
+.Presentation__Title {
+	font-size: ratio(9);
+	font-weight: 300;
+	line-height: 1.15;
+	color: $abbey;
+	@include appearByLines;
+	.word {
+		@for $i from 0 through 20 {
+			&.line-#{$i} > span {
+				transition-delay: 0.25s + (0.2s * $i);
+			}
+		}
+	}
+
+	em {
+		color: $pomegranate;
+	}
+
+	strong {
+		color: $white;
+	}
+
+	@include tabletP {
+		font-size: ratioM(7.2);
+		line-height: 1.21;
+		margin-bottom: ratioM(10);
+	}
+
+	@include large {
+		font-size: ratioL(9);
+	}
+}
+
+.Presentation__Body {
+	font-family: $bodyFont2;
+	font-size: ratio(2.25);
+	line-height: 2;
+	@include appearByLines;
+	@include tabletP {
+		font-size: ratioM(2.5);
+	}
+	@include large {
+		font-size: ratioL(2.25);
+	}
+	&--Big {
+		font-size: ratio(4);
+		font-family: $bodyFont;
+		font-weight: 300;
+		line-height: 1.5;
+		@include tabletP {
+			font-size: ratioM(4.5);
+		}
+		@include large {
+			font-size: ratioL(4);
+		}
+	}
+	&--Small {
+		font-size: ratio(2);
+		line-height: 1.625;
+		@include tabletP {
+			font-size: ratioM(2.5);
+			line-height: 1.5;
+		}
+		@include large {
+			font-size: ratioL(2);
+		}
+	}
+	&--Tiny {
+		font-size: ratio(1.5);
+		line-height: 1.833;
+		@include tabletP {
+			font-size: ratioM(2.5);
+			line-height: 1.5;
+		}
+		@include large {
+			font-size: ratioL(1.5);
+		}
+	}
+}
+
+// Double
+.Presentation__Double {
+	width: cols(8);
+	margin-left: auto;
+	margin-right: auto;
+	display: flex;
+	justify-content: space-between;
+	@include tabletP {
+		width: colsM(8);
+		flex-direction: column-reverse;
+		margin-bottom: ratioM(17.5);
+		&--Right {
+			flex-direction: column;
+		}
+	}
+	@include large {
+		width: colsL(8);
+	}
+}
+
+.Presentation__DoubleTitle {
+	margin-bottom: ratio(2.5);
+	@include tabletP {
+		display: none;
+	}
+	@include large {
+		margin-bottom: ratioL(2.5);
+	}
+	&--Mobile {
+		display: none;
+		@include tabletP {
+			display: block;
+			margin-bottom: ratioM(6.7);
+			width: colsM(6);
+			margin-left: colsM(1);
+			text-align: center;
+		}
+	}
+}
+
+.Presentation__DoubleInfos {
+	width: cols(2.5);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	@include tabletP {
+		width: colsM(6);
+		margin: auto;
+		align-items: center;
+	}
+	@include large {
+		width: colsL(2.5);
+	}
+	.Presentation__Dots {
+		margin-bottom: ratio(2.5);
+		@include large {
+			margin-bottom: ratioL(2.5);
+		}
+	}
+	div.Presentation__Body {
+		margin-bottom: ratio(6);
+		@include tabletP {
+			margin-bottom: ratioM(7);
+		}
+		@include large {
+			margin-bottom: ratioL(6);
+		}
+		h5 {
+			font-size: ratio(2);
+			@include tabletP {
+				font-size: ratioM(3.5);
+			}
+			@include large {
+				font-size: ratioL(2);
+			}
+		}
+	}
+	.Presentation__Body {
+		p, h5 {
+			margin-bottom: ratio(3);
+			@include tabletP {
+				margin-bottom: ratioM(4);
+			}
+			@include large {
+				margin-bottom: ratioL(3);
+			}
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+}
+.Presentation__Double--Right .Presentation__DoubleInfos {
+	margin-right: cols(0.5);
+	@include tabletP {
+		margin-right: auto;
+		margin-left: auto;
+	}
+}
+
+.Presentation__DoubleVideo {
+	width: cols(4);
+	height: cols(4);
+	overflow: hidden;
+	> video {
+		width: 120%;
+		margin-left: -10%;
+    margin-top: -10%;
+	}
+	@include tabletP {
+		margin-bottom: ratioM(7);
+		width: colsM(8);
+		height: auto;
+		overflow: hidden;
+		> video {
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+		}
+	}
+	@include large {
+		width: colsL(4);
+		height: colsL(4);
+	}
+}
+
+/*
+* Non reusables
+*/
+
+// Presentation Top
+.Presentation__ScrollCtaContainer {
+	.ScrollCta {
+		margin-left: cols(2);
+		@include tabletP {
+			margin: auto;
+		}
+	}
+	@include large {
+		width: colsL(12);
+		margin: auto;
+		.ScrollCta {
+			margin-left: colsL(1);
+		}
+	}
+}
+
+// Cards
+.Presentation__Cards {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	z-index: 30;
+	width: 100vw;
+	height: ratio(55);
+	margin-top: ratio(-23);
+	pointer-events: none;
+	@include tabletP {
+		margin-top: 0;
+		height: ratioM(45);
+	}
+	@include large {
+		width: colsL(12);
+		height: ratioL(55);
+		margin-top: ratioL(-23);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.Presentation__Card {
+	position: absolute;
+	width: 50%;
+	top: 0;
+	@include tabletP {
+		width: 90%;
+	}
+	&:first-child {
+		top: ratio(35);
+		@include tabletP {
+			top: ratioM(5);
+		}
+		@include large {
+			top: ratioL(35);
+		}
+	}
+	&:nth-child(2) {
+		margin-left: ratio(-15);
+		@include tabletP {
+			top: 0;
+		}
+		@include large {
+			margin-left: ratioL(-15);
+		}
+	}
+}
+
+.Presentation__CardAppear {
+	opacity: 0;
+	transform: translate3d(0, 40%, 0);
+	transition: transform 1.2s $bezier, opacity 1.2s $bezier;
+	img {
+		width: 100%;
+	}
+}
+
+.Presentation__Card {
+	&:first-child .Presentation__CardAppear {
+		transition: transform 1.2s 0.2s $bezier, opacity 1.2s 0.2s $bezier;
+	}
+	&.is-inview .Presentation__CardAppear {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+// Welcome
+
+.Presentation__Welcome {
+	// margin-top: -15vh;
+	margin-top: ratio(10);
+	@include tabletP {
+		margin-top: 0;
+		display: flex;
+		flex-direction: column;
+	}
+	@include large {
+		margin-top: ratioL(10);
+		width: colsL(12);
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.Presentation__Welcome .Presentation__Dots {
+	top: ratio(3.5);
+	@include large {
+		top: ratioL(3.5)
+	}
+}
+
+.Presentation__WelcomeSmallText {
+	position: absolute;
+	left: cols(2);
+	bottom: ratio(15);
+	display: flex;
+	align-items: center;
+	font-family: $titleFont;
+	text-transform: uppercase;
+	// @include appearFadeIn;
+	@include tabletP {
+		position: relative;
+		justify-content: center;
+		left: colsM(2);
+		width: colsM(4);
+		bottom: 0;
+		order: 3;
+		margin-top: ratioM(17);
+	}
+	@include large {
+		left: colsL(2);
+		bottom: ratioL(15);
+	}
+	> .Dollarzzz {
+		font-size: ratio(2.45);
+		line-height: 1;
+		margin-right: ratio(1.5);
+		// margin-top: ratio(-0.03);
+		margin-top: -3px;
+		animation: dollarRotation 3.5s linear infinite;
+		@include tabletP {
+			font-size: ratioM(3.1);
+			margin-right: ratioM(2.5);
+		}
+		@include large {
+			font-size: ratioL(2.45);
+			margin-right: ratioL(1.5);
+		}
+	}
+	> .Right {
+		font-size: ratio(0.9);
+		letter-spacing: 0.4em;
+		line-height: 2.3;
+		padding-left: ratio(2);
+		@include tabletP {
+			font-size: ratioM(1.1);
+			letter-spacing: 0.6em;
+			padding-left: ratioM(2.5);
+		}
+		@include large {
+			font-size: ratioL(0.9);
+			padding-left: ratioL(2);
+		}
+		.RightLine {
+			display: block;
+			&:first-child {
+				color: $paleSky;
+			}
+		}
+		position: relative;
+		&:before {
+			content: '';
+			position: absolute;
+			background-color: rgba(255, 255, 255, 0.15);
+			width: ratio(0.1);
+			height: 72%;
+			top: 13%;
+			left: 0;
+		}
+	}
+}
+
+@keyframes dollarRotation {
+	from { transform: rotateY(0) }
+	to { transform: rotateY(-360deg) }
+}
+
+.Presentation__WelcomeTop {
+	.AnimatedText {
+		margin-left: ratio(-6);
+		@include tabletP {
+			margin-left: ratioM(1);
+		}
+		@include large {
+			margin-left: 0;
+		}
+	}
+	@include tabletP {
+		order: 1;
+	}
+}
+
+.Presentation__WelcomeBottom {
+	.AnimatedText {
+		margin-left: ratio(1.5);
+		@include tabletP {
+			margin-left: ratioM(-1);
+		}
+		@include large {
+			margin-left: 0;
+		}
+	}
+	@include tabletP {
+		order: 2;
+	}
+}
+
+.Presentation__Welcome {
+	.desktop {
+		height: ratio(121.9);
+		@include large {
+			height: ratioL(121.9);
+		}
+	}
+	.mobile {
+		display: none;
+	}
+	img {
+		width: 104%;
+		margin-left: -3.65%;
+	}
+	@include tabletP {
+		.desktop {
+			display: none;
+		}
+		.mobile {
+			display: block;
+		}
+	}
+}
+
+// Two
+
+.Presentation__Two .Presentation__Dots {
+	top: ratio(3.5);
+	@include large {
+		top: ratioL(3.5);
+	}
+}
+
+.Presentation__Two .Presentation__Title {
+	margin-left: cols(2);
+	margin-bottom: ratio(15);
+	@include tabletP {
+		width: colsM(6);
+		margin-left: colsM(1);
+		margin-bottom: ratioM(10)
+	}
+	@include large {
+		margin-bottom: ratioL(15);
+		// width: colsL(12);
+		margin-left: colsL(1);
+		margin-right: auto;
+	}
+}
+
+.Presentation__TwoContainer {
+	display: flex;
+	margin-left: cols(2);
+	width: cols(8);
+	@include tabletP {
+		flex-direction: column-reverse;
+		width: colsM(6);
+		margin-left: colsM(1);
+	}
+	@include large {
+		margin-left: 0;
+		width: 100%;
+		justify-content: center;
+	}
+}
+
+.Presentation__TwoVideo {
+	width: cols(3);
+	margin-right: cols(1);
+	height: 100%;
+	> svg  {
+		width: 140% !important;
+    height: 140% !important;
+    margin-left: -20%;
+    margin-top: -15%;
+	}
+	@include tabletP {
+		width: colsM(6);
+		height: ratioM(50);
+		margin-top: ratioM(5);
+	}
+	@include large {
+		width: colsL(3);
+		margin-right: colsL(1);
+	}
+}
+
+.Presentation__TwoContainer {
+	.Presentation__Body {
+		width: ratio(34.75);
+		margin-left: ratio(3.5);
+		@include tabletP {
+			width: 100%;
+			margin-left: 0;
+		}
+		@include large {
+			width: ratioL(34.75);
+			margin-left: ratioL(3.5);
+		}
+	}
+}
+
+// Three
+
+.Presentation__Three .Presentation__Dots {
+	top: ratio(2);
+	@include large {
+		top: ratioL(3.5);
+	}
+}
+
+.Presentation__Three .Presentation__Title {
+	margin-left: cols(3);
+	@include tabletP {
+		width: colsM(6);
+		margin-left: colsM(1);
+		br {
+			display: none;
+		}
+	}
+	@include large {
+		margin-left: colsL(2);
+	}
+}
+
+.Presentation__ThreeContainer {
+	display: flex;
+	margin-left: cols(1.75);
+	margin-top: ratio(18.5);
+	@include tabletP {
+		margin-left: colsM(1);
+		flex-direction: column-reverse;
+		overflow: hidden;
+	}
+	@include large {
+		margin-left: ratioL(15);
+		margin-top: ratioL(18.5);
+	}
+}
+
+.Presentation__ThreeVideo {
+	width: cols(4.25);
+	margin-right: cols(1);
+	display: flex;
+	align-items: center;
+	> video {
+		width: 130%;
+    margin-left: -15%;
+	}
+	@include tabletP {
+		width: colsM(6);
+		margin-right: colsM(1);
+	}
+	@include large {
+		width: colsL(4.25);
+		margin-right: colsL(1);
+	}
+}
+
+.Presentation__ThreeTexts {
+	width: ratio(38);
+	.Presentation__Body:first-child {
+		margin-bottom: ratio(8.5);
+		@include tabletP {
+			margin-bottom: ratioM(8);
+		}
+		@include large {
+			margin-bottom: ratioL(8.5);
+		}
+	}
+	@include tabletP {
+		width: colsM(6);
+	}
+	@include large {
+		width: ratioL(38);
+	}
+}
+
+// Pay With
+.Presentation__PayWith {
+	.desktop {
+		height: ratio(121.9);
+		@include large {
+			height: ratioL(121.9);
+		}
+	}
+	.mobile {
+		display: none;
+	}
+	img {
+		width: 104%;
+		margin-left: -3.65%;
+	}
+	@include tabletP {
+		.desktop {
+			display: none;
+		}
+		.mobile {
+			display: block;
+		}
+	}
+}
+
+.Presentation__PayWithTop {
+	.AnimatedText {
+		margin-left: ratio(-6.5);
+		@include tabletP {
+			margin-left: ratioM(1);
+		}
+		@include large {
+			margin-left: 0;
+		}
+	}
+}
+
+.Presentation__PayWithBottom {
+	.AnimatedText {
+		margin-left: ratio(2);
+		@include tabletP {
+			margin-left: ratioM(-1);
+		}
+		@include large {
+			margin-left: 0;
+		}
+	}
+}
+
+// Four
+
+.Presentation__FourText {
+	width: cols(4.5);
+	margin-left: cols(2);
+	font-size: ratio(6.25);
+	font-weight: 300;
+	color: $abbey;
+	line-height: 1.2;
+	@include appearByLines;
+	.word {
+		@for $i from 0 through 20 {
+			&.line-#{$i} > span {
+				transition-delay: 0.25s + (0.2s * $i);
+			}
+		}
+	}
+	em {
+		color: $pomegranate;
+	}
+	@include tabletP {
+		width: colsM(6.4);
+		margin-left: colsM(1);
+		font-size: ratioM(7.2);
+	}
+	@include large {
+		width: colsL(4.5);
+		margin-left: colsL(2);
+		font-size: ratioL(6.25);
+	}
+}
+
+.PresentationFour__Image {
+	width: cols(5);
+	margin-left: cols(5.5);
+	margin-top: ratio(-20);
+	@include appearFadeIn;
+	@include tabletP {
+		margin-top: ratioM(11.5);
+		width: colsM(6);
+		margin-left: colsM(1);
+	}
+	@include large {
+		width: colsL(6);
+		margin-left: colsL(4);
+		margin-top: ratioL(-20);
+	}
+}
+
+.PresentationFour__ImageFloat {
+	will-change: transform;
+	animation: phoneFloat 3s cubic-bezier(.43,.05,.6,.99) alternate infinite;
+	> img {
+		width: 100%;
+	}
+}
+
+@keyframes phoneFloat {
+	from { transform: none }
+	to { transform: translate3d(0, 5%, 0); }
+}
+
+// Five
+
+.Presentation__Five .Presentation__Dots {
+	text-align: center;
+}
+
+.Presentation__FiveTitle {
+	font-size: ratio(6.25);
+	font-weight: 300;
+	width: cols(8);
+	margin: auto;
+	text-align: center;
+	line-height: 1.2;
+	margin-top: ratio(4);
+	@include appearByLines;
+	.word {
+		@for $i from 0 through 20 {
+			&.line-#{$i} > span {
+				transition-delay: 0.25s + (0.2s * $i);
+			}
+		}
+	}
+	em {
+		color: $pomegranate;
+	}
+	strong {
+		color: $white;
+	}
+
+	@include tabletP {
+		font-size: ratioM(5);
+		width: colsM(6.1);
+	}
+	@include large {
+		font-size: ratioL(6.25);
+		width: colsL(8);
+		margin-top: ratioL(4);
+	}
+}
+
+.Presentation__FiveVideo {
+	width: cols(8);
+	margin: auto;
+	> video {
+		width: 100%;
+	}
+	@include tabletP {
+		width: colsM(8);
+	}
+	@include large {
+		width: colsL(8);
+	}
+}
+
+.Presentation__FiveBottom {
+	margin-top: ratio(6);
+	margin-left: cols(7);
+	width: cols(3);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	.Button {
+		margin-top: ratio(5);
+		@include tabletP {
+			margin-top: ratioM(6.5);
+			margin-left: auto;
+			margin-right: auto;
+		}
+		@include large {
+			margin-top: ratioL(5);
+		}
+	}
+	@include tabletP {
+		width: colsM(6.2);
+		margin-left: colsM(1);
+		margin-top: ratioM(5);
+	}
+	@include large {
+		margin-top: ratioL(6);
+		margin-left: colsL(7);
+		width: colsL(3);
+	}
+}
+
+.no-welcome-spacer {
+	height: 400px;
+	@media screen and (max-width: 600px) {
+		height: 100px;
+	}
+}

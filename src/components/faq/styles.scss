@@ -1,0 +1,197 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.Faq {
+	width: cols(10);
+	margin: auto;
+	padding-bottom: ratio(20);
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	opacity: 0;
+	@include appearFadeIn;
+	@include tabletP {
+		width: colsM(6);
+		padding-bottom: ratioM(20);
+	}
+	@include large {
+		width: colsL(12);
+		padding-bottom: ratioL(20);
+	}
+}
+
+.Faq__Left {
+	width: cols(2);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: sticky;
+	top: ratio(16);
+	@include tabletP {
+		display: none;
+	}
+	@include large {
+		width: colsL(3);
+		top: ratioL(20);
+	}
+}
+
+.Faq__LeftItem {
+	color: $paleSky;
+	font-size: ratio(1.4);
+	height: ratio(2.2);
+	margin-bottom: ratio(2);
+	white-space: nowrap;
+	cursor: pointer;
+	@include link;
+	transition: color 0.6s $bezier;
+	@include tabletP {
+		&:hover:after {
+			transform: none;
+		}
+	}
+	@include large {
+		font-size: ratioL(1.4);
+		height: ratioL(2.2);
+		margin-bottom: ratioL(2);
+	}
+	&:hover {
+		color: $white;
+	}
+	&.current {
+		color: $white;
+		&:after {
+			transform-origin: left;
+			transform: scaleX(1);
+			transition: transform 0.6s $bezier2;
+		}
+	}
+}
+
+.Faq__Right {
+	width: cols(7);
+	@include tabletP {
+		width: 100%;
+	}
+	@include large {
+		width: colsL(8.5);
+	}
+}
+
+.Faq__RightItem {
+	padding: ratio(4) ratio(6) ratio(4) 0;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+	// height: ratio(2);
+	transition: height 0.6s $bezier2;
+	@include tabletP {
+		padding: ratioM(4) ratioM(6) ratioM(4) 0;
+		// height: ratioM(2);
+	}
+	@include large {
+		padding: ratioL(4) ratioL(6) ratioL(4) 0;
+		// height: ratioL(2);
+	}
+	&:first-child {
+		border-top: solid ratio(0.1) rgba(255, 255, 255, 0.1);
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		background-color: rgba(255, 255, 255, 0.1);
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: ratio(0.1);
+		@include tabletP {
+			height: ratioM(0.1);
+		}
+		@include large {
+			height: ratioL(0.1);
+		}
+	}
+	@include link;
+	&:after {
+		height: ratio(0.1);
+		@include tabletP {
+			height: ratioM(0.1);
+		}
+		@include large {
+			height: ratioL(0.1);
+		}
+	}
+	&.current:after {
+		transform-origin: left;
+		transform: scaleX(1);
+		transition: transform 0.6s $bezier2;
+	}
+}
+html.is-touch .Faq__RightItem:not(.current):hover:after{
+	transform-origin: right;
+	transform: scaleX(0);
+}
+
+.Faq__RightArrow {
+	position: absolute;
+	height: ratio(0.8);
+	right: ratio(3);
+	margin-top: ratio(0.5);
+	transition: transform 0.6s $bezier;
+	@include tabletP {
+		height: ratioM(0.8);
+		margin-top: ratioM(0.35);
+	}
+	@include large {
+		height: ratioL(0.8);
+		right: ratioL(3);
+		margin-top: ratioL(0.5);
+	}
+}
+.Faq__RightItem.current .Faq__RightArrow {
+	transform: rotate(-180deg);
+}
+
+.Faq__RightQuestion {
+	font-size: ratio(2);
+	line-height: 1.5;
+	@include tabletP {
+		font-size: ratioM(1.6);
+	}
+	@include large {
+		font-size: ratioL(2);
+	}
+}
+
+.Faq__RightAnswer {
+	font-family: $bodyFont2;
+	font-size: ratio(1.8);
+	line-height: 1.3;
+	font-weight: 300;
+	padding-top: ratio(4);
+	visibility: hidden;
+	opacity: 0;
+	transition: opacity 0.6s $bezier2, visibility 0s linear 0.6s;
+	color: #858ea4;
+	> p {
+		margin-bottom: ratio(1);
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+	@include tabletP {
+		padding-top: ratioM(4);
+		font-size: ratioM(2);
+		line-height: 1.75;
+	}
+	@include large {
+		font-size: ratioL(1.8);
+		padding-top: ratioL(4);
+	}
+}
+
+.Faq__RightItem.current .Faq__RightAnswer {
+	visibility: visible;
+	opacity: 1;
+	transition: opacity 0.6s $bezier2 0s;
+}

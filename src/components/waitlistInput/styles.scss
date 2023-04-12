@@ -1,0 +1,139 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.WaitlistInput__Wrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.WaitlistInput {
+	display: inline-flex;
+	height: ratio(6.25);
+	border-radius: ratio(0.3);
+	border: solid thin $paleSky;
+	@include appearFadeIn;
+	transition-duration: 1.6s;
+	@include tabletP {
+		width: colsM(6);
+		height: ratioM(6.25);
+		border: none;
+		position: relative;
+		&:after {
+			content: '';
+			position: absolute;
+			width: 100%;
+			bottom: 0;
+			height: ratioM(0.1);
+			background: $gradientToRight;
+		}
+	}
+	@include large {
+		height: ratioL(6.25);
+		border-radius: ratioL(0.3);
+	}
+}
+
+.WaitlistInput > input {
+	min-width: ratio(30);
+	font-family: $bodyFont;
+	font-size: ratio(1.35);
+	padding: 0 ratio(3);
+	box-sizing: border-box;
+	color: $white;
+	&::placeholder {
+		color: $paleSky;
+		transition: color 0.6s $bezier;
+	}
+	&:focus::placeholder {
+		color: rgba(105, 111, 122, 0.6);
+	}
+	@include tabletP {
+		width: calc(100% - #{ratioM(6.25)});
+		padding: 0;
+		font-size: ratioM(2.5);
+		font-family: $bodyFont2;
+	}
+	@include large {
+		min-width: ratioL(30);
+		padding: 0 ratioL(3);
+		font-size: ratioL(1.35);
+	}
+}
+
+.WaitlistInput__Submit {
+	width: ratio(6.25);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-left: solid thin $paleSky;
+	cursor: pointer;
+	overflow: hidden;
+	> svg {
+		width: ratio(0.5);
+	}
+	&:hover svg {
+		animation: arrowAnimation 1s cubic-bezier(0.4, 0, 0.2, 1);
+	}
+	@include tabletP {
+		border-left: none;
+		width: ratioM(6.25);
+		> svg {
+			width: ratioM(0.75);
+			> path {
+				stroke: $paleSky;
+			}
+		}
+	}
+	@include large {
+		width: ratioL(6.25);
+		> svg {
+			width: ratioL(0.5);
+		}
+	}
+}
+
+@keyframes arrowAnimation {
+	0% {
+		transform: translate3d(0, 0, 0);
+	}
+	30% {
+		opacity: 0;
+	}
+	49% {
+		transform: translate3d(ratio(2), 0, 0);
+		opacity: 0;
+	}
+	50% {
+		transform: translate3d(ratio(-2), 0, 0);
+		opacity: 0;
+	}
+	100% {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.WaitlistInput__Message {
+	margin-top: ratio(0.75);
+	font-size: ratio(1.4);
+	max-width: ratio(30);
+	line-height: 1.2;
+	min-height: ratio(3.5);
+	@include large {
+		margin-top: ratioL(0.75);
+		font-size: ratioL(1.4);
+		min-height: ratioL(3.5);
+	}
+	@include tabletP {
+		max-width: 80%;
+		margin-top: ratioM(1.5);
+		font-size: ratioM(1.6);
+		min-height: ratioM(3.5);
+	}
+	.error {
+		color: red;
+	}
+	.success {
+		color: green;
+	}
+}

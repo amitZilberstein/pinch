@@ -1,0 +1,116 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.CardholderAgreement__Container {
+	margin: auto;
+	@include large {
+		width: colsL(12);
+	}
+}
+
+.CardholderAgreement__Title {
+	padding-top: ratio(30);
+	margin-left: cols(2);
+	margin-right: cols(1);
+	font-weight: 300;
+	font-size: ratio(12.5);
+	line-height: 0.92;
+	color: $abbey;
+	strong {
+		color: $pomegranate;
+	}
+	@include tabletP {
+		padding-top: ratioM(23.5);
+		font-size: ratioM(7);
+		margin-left: colsM(1);
+		margin-right: colsM(1);
+	}
+	@include large {
+		padding-top: ratioL(30);
+		margin-left: colsL(1);
+		margin-right: colsL(1);
+		font-size: ratioL(12.5);
+	}
+}
+
+.CardholderAgreement__Intro {
+	margin-top: ratio(17.5);
+	margin-left: cols(5);
+	width: cols(4);
+	font-family: $bodyFont2;
+	font-size: ratio(2.4);
+	line-height: 1.875;
+	@include tabletP {
+		margin-top: ratioM(12);
+		margin-left: colsM(1);
+		width: colsM(6);
+		font-size: ratioM(2.5);
+	}
+	@include large {
+		margin-top: ratioL(17.5);
+		margin-left: colsL(5);
+		width: colsL(4);
+		font-size: ratioL(2.4);
+	}
+}
+
+.CardholderAgreement__Laws {
+	margin-top: ratio(9);
+	margin-left: cols(5);
+	width: cols(4);
+	margin-bottom: ratio(21.25);
+	@include tabletP {
+		margin-top: ratioM(7.25);
+		margin-left: colsM(1);
+		margin-bottom: ratioM(14);
+		width: colsM(6);
+	}
+	@include large {
+		margin-top: ratioL(9);
+		margin-left: colsL(5);
+		width: colsL(4);
+		margin-bottom: ratioL(21.25);
+	}
+}
+
+.CardholderAgreement__Law {
+	margin-bottom: ratio(6);
+	@include tabletP {
+		margin-bottom: ratioM(5);
+	}
+	@include large {
+		margin-bottom: ratioL(6);
+	}
+	> h3 {
+		font-size: ratio(1.5);
+		font-weight: 300;
+		line-height: 1.375;
+		@include tabletP {
+			font-size: ratioM(2);
+		}
+		@include large {
+			font-size: ratioL(2);
+		}
+	}
+	> div {
+		margin-top: ratio(3);
+		@include tabletP {
+			margin-top: ratioM(4);
+		}
+		@include large {
+			margin-top: ratioL(3);
+		}
+		p {
+			font-family: $bodyFont2;
+			font-size: ratio(1.5);
+			line-height: 1.833;
+			color: #959595;
+			@include tabletP {
+				font-size: ratioM(2);
+			}
+			@include large {
+				font-size: ratioL(1.5);
+			}
+		}
+	}
+}

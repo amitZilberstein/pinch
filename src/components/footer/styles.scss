@@ -1,0 +1,153 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.Footer {
+	width: cols(10);
+	padding: ratio(11) cols(1) ratio(5.5);
+	@include tabletP {
+		width: colsM(6);
+		padding: ratioM(10) colsM(1) ratioM(5);
+	}
+	@include large {
+		width: colsL(12);
+		padding: ratioL(11) colsL(1) ratioL(5.5);
+		margin: auto;
+	}
+}
+
+.Footer__Top {
+	display: flex;
+	align-items: flex-start;
+	@include tabletP {
+		flex-direction: column;
+	}
+}
+
+.Footer__Logo {
+	width: cols(0.5);
+	@include tabletP {
+		width: colsM(1);
+	}
+	@include large {
+		width: colsL(0.5);
+	}
+}
+
+.Footer__Nav {
+	display: flex;
+	margin-left: cols(5.5);
+	@include tabletP {
+		width: 100%;
+		flex-direction: column;
+		margin-left: 0;
+		margin-top: ratioM(7.5);
+	}
+	@include large {
+		margin-left: colsL(7.5);
+	}
+	> ul {
+		width: cols(1.5);
+		margin-right: cols(0.5);
+		@include tabletP {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			border-top: solid ratioM(0.1) rgba(255, 255, 255, 0.1);
+			padding-top: ratioM(3.5);
+			&:first-child {
+				margin-bottom: ratioM(5);
+			}
+		}
+		@include large {
+			width: colsL(1.5);
+			margin-right: colsL(0.5);
+		}
+		> li {
+			font-size: ratio(1.3);
+			font-weight: 300;
+			color: $paleSky;
+			margin-bottom: ratio(2);
+			@include tabletP {
+				width: 100%;
+				font-size: ratioM(2);
+				margin-bottom: ratioM(2.5);
+				margin-left: 50%;
+			}
+			@include large {
+				font-size: ratioL(1.3);
+				margin-bottom: ratioL(2);
+			}
+			&:first-child {
+				color: $white;
+				font-weight: 500;
+				margin-bottom: ratio(4);
+				@include tabletP {
+					width: 50%;
+					margin-left: 0;
+				}
+				@include large {
+					margin-bottom: ratioL(4);
+				}
+			}
+			&:nth-child(2) {
+				@include tabletP {
+					width: 50%;
+					margin-left: 0;
+				}
+			}
+			a {
+				@include link;
+				padding-bottom: ratio(0.3);
+				transition: color 0.8s $bezier2;
+				&:hover {
+					color: $white;
+				}
+				@include large {
+					padding-bottom: ratioL(0.3);
+				}
+			}
+		}
+	}
+}
+
+.Footer__Bottom {
+	width: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	margin-top: ratio(14);
+	@include tabletP {
+		margin-top: ratioM(16);
+		flex-direction: column;
+	}
+	@include large {
+		margin-top: ratioL(14);
+	}
+	> span {
+		font-family: $bodyFont2;
+		font-size: ratio(0.8);
+		line-height: 1.875;
+		color: $paleSky;
+		text-transform: uppercase;
+		letter-spacing: 0.125em;
+		&:nth-child(2) {
+			width: cols(4);
+		}
+		@include tabletP {
+			width: 100%;
+			font-size: ratioM(1.6);
+			&:nth-child(2) {
+				width: 100%;
+				font-size: ratioM(1.2);
+				line-height: 1.6;
+				margin-top: ratioM(4);
+			}
+		}
+		@include large {
+			font-size: ratioL(0.8);
+			&:nth-child(2) {
+				width: colsL(4);
+			}
+		}
+	}
+}

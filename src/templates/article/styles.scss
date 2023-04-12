@@ -1,0 +1,428 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.Article {
+	padding-top: ratio(24);
+	@include tabletP {
+		padding-top: ratioM(21);
+	}
+	@include large {
+		width: colsL(12);
+		margin-left: auto;
+		margin-right: auto;
+		padding-top: ratioL(24);
+	}
+}
+
+.Article__Hero {
+	padding-left: cols(1);
+	display: flex;
+	margin-bottom: ratio(7);
+	overflow: hidden;
+	@include appearFadeIn;
+	@include tabletP {
+		padding-left: 0;
+		margin-left: colsM(1);
+		margin-bottom: ratioM(7);
+	}
+	@include large {
+		padding-left: 0;
+		margin-bottom: ratioL(7);
+	}
+}
+
+.Article__Date {
+	width: cols(1);
+	@include tabletP {
+		display: none;
+	}
+	@include large {
+		width: colsL(1);
+		padding-left: ratioL(1);
+	}
+	span {
+		word-wrap: none;
+		display: block;
+		transform-origin: left;
+		transform: rotate(90deg);
+		white-space: nowrap;
+		color: $paleSky;
+		font-family: $titleFont;
+		font-size: ratio(0.8);
+		line-height: ratio(1.1);
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+		position: relative;
+		padding-left: ratio(1.75);
+		@include large {
+			font-size: ratioL(0.8);
+			line-height: ratioL(1.1);
+			padding-left: ratioL(1.75);
+		}
+		&:before {
+			position: absolute;
+			content: '';
+			background-color: $pomegranate;
+			width: ratio(0.8);
+			height: ratio(0.8);
+			left: 0;
+			top: ratio(0.1);
+			@include large {
+				width: ratioL(0.8);
+				height: ratioL(0.8);
+				top: ratioL(0.1);
+			}
+		}
+	}
+}
+
+.Article__MainImage {
+	width: cols(10);
+	transform: scale(1.2);
+	height: ratio(70);
+	transform-origin: left top;
+	overflow: hidden;
+	img {
+		width: 100%;
+	}
+	@include tabletP {
+		width: colsM(7);
+		height: ratioM(53);
+		transform: none;
+		img {
+			width: auto;
+			min-width: 100%;
+			height: 100%;
+		}
+	}
+	@include large {
+		width: colsL(10);
+		height: ratioL(70);
+	}
+}
+
+.Article__Title {
+	width: cols(7);
+	font-family: $bodyFont2;
+	font-size: ratio(9);
+	line-height: 1.15;
+	color: $pomegranate;
+	margin-left: cols(2);
+	margin-bottom: ratio(10);
+	@include appearByLines;
+	@include tabletP {
+		font-size: ratioM(7);
+		width: colsM(6);
+		margin-left: colsM(1);
+		margin-bottom: ratioM(9);
+	}
+	@include large {
+		width: colsL(7);
+		font-size: ratioL(9);
+		margin-left: colsL(1);
+		margin-bottom: ratioL(10);
+	}
+}
+
+.Article__IntroContainer {
+	margin-left: cols(2);
+	margin-bottom: ratio(7);
+	display: flex;
+	align-items: flex-start;
+	@include tabletP {
+		margin-left: colsM(1);
+		flex-direction: column;
+		margin-bottom: ratioM(8);
+	}
+	@include large {
+		margin-left: colsL(1);
+		margin-bottom: ratioL(7);
+	}
+}
+
+.Article__IntroShare {
+	width: cols(1.5);
+	padding-top: ratio(1.5);
+	@include appearFadeIn;
+	@include tabletP {
+		width: colsM(3);
+	}
+	@include large {
+		width: colsL(1.5);
+		padding-top: ratioL(1.5);
+	}
+	> span {
+		display: block;
+		color: $paleSky;
+		font-family: $titleFont;
+		font-size: ratio(1);
+		line-height: ratio(1.1);
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+		margin-bottom: ratio(2);
+		@include tabletP {
+			font-size: ratioM(1.5);
+			letter-spacing: 0.3em;
+			color: $white;
+			margin-bottom: ratioM(3.5);
+		}
+		@include large {
+			font-size: ratioL(1);
+			line-height: ratioL(1.1);
+			margin-bottom: ratioL(2);
+		}
+	}
+	svg {
+		fill: $paleSky;
+		transition: fill 0.3s $bezier;
+		width: auto;
+		height: ratio(1.5);
+		margin-right: ratio(1.75);
+		&:hover {
+			fill: $white;
+		}
+		@include tabletP {
+			height: ratioM(3);
+			margin-right: ratioM(3.2);
+		}
+		@include large {
+			height: ratioL(1.5);
+			margin-right: ratioL(1.75);
+		}
+	}
+}
+
+.Article__Intro {
+	margin-left: cols(0.5);
+	width: cols(4);
+	font-family: $bodyFont2;
+	font-size: ratio(3);
+	line-height: 1.8;
+	@include tabletP {
+		margin-left: 0;
+		margin-top: ratioM(8);
+		width: colsM(6);
+		font-size: ratioM(2.5);
+		line-height: 2;
+	}
+	@include large {
+		margin-left: colsL(1.5);
+		width: colsL(4);
+		font-size: ratioL(3);
+	}
+}
+
+.Article__Section {
+	margin-bottom: ratio(10);
+	@include tabletP {
+		margin-bottom: ratioM(11);
+	}
+	@include large {
+		margin-bottom: ratioL(10);
+	}
+}
+
+.Article__NormalParagraph {
+	width: cols(4);
+	margin-left: auto;
+	margin-right: auto;
+	font-family: $bodyFont2;
+	font-size: ratio(1.8);
+	line-height: 2;
+	@include tabletP {
+		width: colsM(6);
+		font-size: ratioM(2);
+	}
+	@include large {
+		width: colsL(4);
+		font-size: ratioL(1.8);
+		margin-left: colsL(4);
+	}
+	> p {
+		margin-bottom: ratio(5);
+		@include large {
+			margin-bottom: ratioL(5);
+		}
+	}
+}
+
+.Article__FullWidthImage {
+	.mask {
+		overflow: hidden;
+	}
+	img {
+		@include tabletP {
+			height: ratioM(56);
+		}
+	}
+}
+
+.Article__Quote {
+	width: cols(8);
+	margin-left: auto;
+	margin-right: auto;
+	@include tabletP {
+		width: colsM(6);
+	}
+	@include large {
+		width: colsL(12);
+	}
+}
+
+.Article__QuoteText {
+	width: cols(6);
+	font-family: $bodyFont2;
+	font-size: ratio(5);
+	line-height: 1.4;
+	color: $pomegranate;
+	margin-bottom: ratio(4);
+	position: relative;
+	padding-left: cols(1);
+	@include appearByLines;
+	@include tabletP {
+		width: colsM(6);
+		font-size: ratioM(5);
+		line-height: 1.4;
+		padding-left: 0;
+		margin-bottom: ratioM(6);
+	}
+	@include large {
+		width: colsL(8);
+		font-size: ratioL(5);
+		margin-bottom: ratioL(4);
+		padding-left: colsL(2.5);
+	}
+	&:before {
+		position: absolute;
+		content: '';
+		left: 0;
+		top: 8%;
+		width: ratio(0.2);
+		height: 84%;
+		background-color: $pomegranate;
+		@include tabletP {
+			display: none;
+		}
+	}
+}
+
+.Article__QuoteAuthor {
+	color: $paleSky;
+	font-family: $titleFont;
+	font-size: ratio(0.8);
+	line-height: ratio(1.1);
+	letter-spacing: 0.25em;
+	text-transform: uppercase;
+	padding-left: cols(1);
+	> p {
+		display: inline-block;
+	}
+	@include tabletP {
+		padding-left: 0;
+		font-size: ratioM(1.5);
+		letter-spacing: 0.4em;
+	}
+	@include large {
+		font-size: ratioL(0.8);
+		line-height: ratioL(1.1);
+		padding-left: colsL(2.5);
+	}
+}
+
+.Article__Image {
+	width: cols(8);
+	margin-left: auto;
+	margin-right: auto;
+	@include tabletP {
+		width: colsM(6);
+	}
+	@include large {
+		width: colsL(12);
+	}
+	.mask {
+		overflow: hidden;
+	}
+	img {
+		width: 100%;
+		@include tabletP {
+			width: auto;
+			height: ratioM(48.5);
+			margin-left: -50%;
+		}
+	}
+}
+
+.Article__FooterShare {
+	width: cols(1.25);
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: ratio(15);
+	text-align: center;
+	@include tabletP {
+		width: colsM(4);
+		margin-bottom: ratioM(13);
+	}
+	@include large {
+		width: colsL(1.25);
+		margin-bottom: ratioL(15);
+	}
+	> span {
+		display: block;
+		color: $paleSky;
+		font-family: $titleFont;
+		font-size: ratio(1);
+		line-height: ratio(1.1);
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+		margin-bottom: ratio(2);
+		position: relative;
+		padding-left: ratio(1.75);
+		@include tabletP {
+			font-size: ratioM(1.5);
+			letter-spacing: 0.3em;
+			color: $white;
+			margin-bottom: ratioM(3.5);
+		}
+		@include large {
+			font-size: ratioL(1);
+			line-height: ratioL(1.1);
+			margin-bottom: ratioL(2);
+			padding-left: ratioL(1.75);
+		}
+		&:before {
+			position: absolute;
+			content: '';
+			background-color: $pomegranate;
+			width: ratio(0.8);
+			height: ratio(0.8);
+			left: 0;
+			top: ratio(0.1);
+			@include tabletP {
+				display: none;
+			}
+			@include large {
+				width: ratioL(0.8);
+				height: ratioL(0.8);
+				top: ratioL(0.1);
+			}
+		}
+	}
+	svg {
+		fill: $paleSky;
+		transition: fill 0.3s $bezier;
+		width: auto;
+		height: ratio(1.5);
+		margin-right: ratio(1.75);
+		&:hover {
+			fill: $white;
+		}
+		@include tabletP {
+			height: ratioM(3);
+			margin-right: ratioM(3.2);
+		}
+		@include large {
+			height: ratioL(1.5);
+			margin-right: ratioL(1.75);
+		}
+	}
+}

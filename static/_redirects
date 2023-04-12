@@ -1,0 +1,11 @@
+http://pinchbank.com/* https://www.pinchbanking.com/:splat 301!
+https://pinchbank.com/* https://www.pinchbanking.com/:splat 301!
+
+http://www.pinchbank.com/* https://www.pinchbanking.com/:splat 301!
+https://www.pinchbank.com/* https://www.pinchbanking.com/:splat 301!
+
+http://ludensbank.com/* https://www.pinchbanking.com/:splat 301!
+https://ludensbank.com/* https://www.pinchbanking.com/:splat 301!
+
+http://www.ludensbank.com/* https://www.pinchbanking.com/:splat 301!
+https://www.ludensbank.com/* https://www.pinchbanking.com/:splat 301!

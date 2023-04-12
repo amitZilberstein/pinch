@@ -1,0 +1,429 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+
+// Downdload
+.GetPinchDownload {
+	width: 100vw;
+	height: ratio(80);
+	position: relative;
+	overflow: hidden;
+	@include tabletP {
+		height: ratioM(90);
+	}
+	@include large {
+		height: ratioL(130);
+	}
+}
+
+.GetPinchDownload__Background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: -1;
+	@include tabletP {
+		top: 0;
+		left: -50%;
+	}
+	@include large {
+		top: calc(50% - #{ratioL(60)});
+	}
+	@media screen and (min-width: 2200px) {
+		top: calc(50% - #{ratio(55)});
+	}
+	> div {
+		width: 100%;
+		> video {
+			width: 100%;
+		}
+		@include tabletP {
+			display: none;
+		}
+		&.enter-video.hidden {
+			display: none;
+		}
+		&.loop-video {
+			display: none;
+			&.visible {
+				display: block;
+				@include tabletP {
+					display: none;
+				}
+			}
+		}
+	}
+	.mobile {
+		display: none;
+		@include tabletP {
+			display: block;
+			height: 100%;
+		}
+	}
+}
+
+
+.GetPinchDownload__Container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	margin-top: ratio(2);
+	@include tabletP {
+		margin-top: ratioM(16);
+	}
+	@include large {
+		// margin-top: ratioL(2);
+	}
+}
+
+.GetPinchDownload__Title {
+	font-size: ratio(20);
+	font-weight: 500;
+	text-align: center;
+	margin-top: ratio(15);
+	overflow: hidden;
+	line-height: 0.8;
+	> span {
+		display: block;
+		transform: translate3d(0, 100%, 0);
+		transition: transform 1.5s $bezier2 0.3s;
+	}
+	@include tabletP {
+		font-size: ratioM(10);
+	}
+	@include large {
+		font-size: ratioL(20);
+		margin-top: ratioL(46);
+		// margin-top: 22vh;
+	}
+}
+.GetPinchDownload.is-inview .GetPinchDownload__Title > span {
+	transform: none;
+}
+
+.GetPinchDownload__Buttons {
+	width: cols(6);
+	margin: ratio(10) auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include appearFadeIn;
+	@include tabletP {
+		width: colsM(6);
+		margin: ratioM(8) auto;
+		flex-direction: column;
+	}
+	@include large {
+		width: colsL(6);
+		margin: ratioL(10) auto;
+	}
+}
+
+.GetPinchDownload__Button {
+	border-radius: ratio(5);
+	height: ratio(6.25);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 0 ratio(4);
+	cursor: pointer;
+	overflow: hidden;
+	background: rgba(255, 255, 255, 1);
+	transition: background 0.7s $bezier;
+	@include tabletP {
+		height: ratioM(8.5);
+		border-radius: ratioM(7.5);
+		padding: 0;
+		width: colsM(5.1);
+	}
+	@include large {
+		border-radius: ratioL(5);
+		height: ratioL(6.25);
+		padding: 0 ratioL(4);
+	}
+	> svg {
+		width: ratio(1.5);
+		margin-right: ratio(2);
+		z-index: 1;
+		path {
+			transition: fill 0.7s $bezier;
+		}
+		@include tabletP {
+			width: ratioM(2.2);
+			margin-right: ratioM(2.5);
+		}
+		@include large {
+			width: ratioL(1.5);
+			margin-right: ratioL(2);
+		}
+	}
+	> span {
+		color: #464646;
+		font-size: ratio(1.2);
+		font-weight: 300;
+		z-index: 1;
+		height: ratio(1.2);
+		overflow: hidden;
+		transition: color 0.7s $bezier;
+		@include tabletP {
+			font-size: ratioM(1.8);
+			height: ratioM(1.8);
+		}
+		@include large {
+			font-size: ratioL(1.2);
+			height: ratioL(1.2);
+		}
+	}
+	&:first-child {
+		margin-right: ratio(2.5);
+		@include tabletP {
+			margin-right: 0;
+			margin-bottom: ratioM(2.5);
+		}
+	}
+	&:hover {
+		background: rgba(255, 255, 255, 0.2);
+		> svg path {
+			fill: $white;
+		}
+		> span {
+			color: $white;
+		}
+	}
+}
+html.is-touch .GetPinchDownload__Button:hover {
+	background: rgba(255, 255, 255, 1);
+	> svg path {
+		fill: #464646;
+	}
+	> span {
+		color: #464646;
+	}
+}
+
+
+// Get Pinch subscribe
+
+.GetPinchSubscribe {
+	width: cols(8);
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: ratio(13.75);
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	@include tabletP {
+		width: colsM(6);
+		margin-top: ratioM(16);
+		margin-bottom: ratioM(13.75);
+	}
+	@include large {
+		width: colsL(10);
+		margin-bottom: ratioL(13.75);
+	}
+}
+
+.GetPinchSubscribe .Presentation__Dots {
+	top: ratio(3);
+	right: cols(-1);
+}
+
+.GetPinchSubscribe__Title {
+	font-weight: 300;
+	font-size: ratio(10);
+	margin-bottom: ratio(2.5);
+	@include tabletP {
+		font-size: ratioM(8.5);
+		text-align: center;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: ratioM(3.5);
+	}
+	@include large {
+		font-size: ratioL(10);
+		margin-bottom: ratioL(2.5);
+	}
+}
+
+.GetPinchSubscribe__Join {
+	font-family: $bodyFont2;
+	font-size: ratio(2.4);
+	color: $pomegranate;
+	margin-bottom: ratio(15);
+	height: ratio(2.5);
+	@include tabletP {
+		font-size: ratioM(3);
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: ratioM(16);
+		height: ratioM(4);
+		text-align: center;
+	}
+	@include large {
+		font-size: ratioL(4);
+		margin-bottom: ratioL(15);
+		height: ratioL(4.5);
+	}
+}
+
+.GetPinchSubscribe__JoinResponse {
+	min-height: ratio(2.4);
+	@include large {
+		min-height: ratioL(2.4);
+	}
+	@include tabletP {
+		min-height: ratioM(2.4);
+	}
+	.success {
+		color: green;
+	}
+}
+
+.GetPinchSubscribe__Title,
+.GetPinchSubscribe__Join {
+	overflow: hidden;
+	span {
+		display: block;
+		transform: translate3d(0, 100%, 0);
+		transition: transform 1.5s $bezier2 0.5s;
+	}
+}
+
+.GetPinchSubscribe.is-inview {
+	.GetPinchSubscribe__Title,
+	.GetPinchSubscribe__Join {
+		span {
+			transform: none;
+		}
+	}
+}
+
+.GetPinchSubscribe.is-inview {
+	.GetPinchSubscribe__Join.show-response {
+		.GetPinchSubscribe__JoinInitial,
+		.GetPinchSubscribe__JoinResponse  {
+			transform: translate3d(0, -100%, 0);
+		}
+	}
+	@include tabletP {
+		.GetPinchSubscribe__Join {
+			overflow: visible;
+			position: relative;
+			width: 100%;
+			height: auto;
+			.GetPinchSubscribe__JoinResponse  {
+				opacity: 0;
+			}
+			.GetPinchSubscribe__JoinInitial,
+			.GetPinchSubscribe__JoinResponse  {
+				width: 100%;
+				position: absolute;
+				transform: translate3d(0, 0, 0);
+				transition: transform 0s, opacity 0.6s $bezier;
+			}
+			&.show-response  {
+				.GetPinchSubscribe__JoinInitial {
+					opacity: 0;
+					transform: translate3d(0, 0, 0);
+				}
+				.GetPinchSubscribe__JoinResponse {
+					opacity: 1;
+					transform: translate3d(0, 0, 0);
+				}
+			}
+		}
+	}
+}
+
+.GetPinchSubscribe__Input {
+	width: 100%;
+	margin-bottom: ratio(5.5);
+	padding-bottom: ratio(3.5);
+	border-bottom: solid ratio(0.1) rgba(77, 81, 89, 1);
+	transition: border-color 0.3s $bezier;
+	position: relative;
+	@include tabletP {
+		margin-bottom: ratioM(5);
+	}
+	@include large {
+		margin-bottom: ratioL(5.5);
+		padding-bottom: ratioL(3.5);
+		border-bottom: solid ratioL(0.1) rgba(77, 81, 89, 1);
+	}
+	&:after {
+		position: absolute;
+		content: '';
+		width: 100%;
+		height: ratio(0.1);
+		min-height: 1px;
+		// bottom: ratio(-0.1);
+		bottom: 0;
+		right: 0;
+		background: $gradientToRight;
+		transform-origin: right;
+		transform: scaleX(0);
+		transition: transform 1s $bezier2;
+		@include tabletP {
+			height: ratioM(0.1);
+			bottom: ratioM(-0.1);
+		}
+		@include large {
+			height: ratioL(0.1);
+		}
+	}
+	&:focus-within {
+		border-bottom: solid ratio(0.1) rgba(77, 81, 89, 0.3);
+		input::placeholder {
+			color: rgba(77, 81, 89, 0.3);
+		}
+		&:after {
+			transform-origin: left;
+			transform: scaleX(1);
+			transition: transform 0.6s $bezier2;
+		}
+		@include large {
+			border-bottom: solid ratioL(0.1) rgba(77, 81, 89, 0.3);
+		}
+	}
+	.GetPinchSubscribe__InputContainer {
+		overflow: hidden;
+	}
+	input {
+		width: 100%;
+		font-family: $bodyFont2;
+		font-size: ratio(8);
+		font-weight: 300;
+		line-height: 1;
+		color: $white;
+		transform: translate3d(0, 100%, 0);
+		transition: transform 1.6s $bezier2 0.7s;
+		caret-color: $pomegranate;
+		&::placeholder {
+			color: rgba(77, 81, 89, 1);
+			transition: color 0.6s $bezier;
+		}
+		@include tabletP {
+			font-size: ratioM(3.5);
+			width: 100%;
+			text-align: center;
+		}
+		@include large {
+			font-size: ratioL(8);
+		}
+	}
+}
+
+.GetPinchSubscribe.is-inview .GetPinchSubscribe__Input {
+	input {
+		transform: none;
+	}
+}
+
+.GetPinchSubscribe .Button {
+	@include tabletP {
+		margin-left: auto;
+		margin-right: auto;
+	}
+}

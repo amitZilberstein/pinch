@@ -1,0 +1,64 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+// Default transition pages styles
+.enter-active {
+	transform: translate3d(0, 15vh, 0);
+}
+.enter-done {
+	transform: none;
+	transition: transform 0.8s $bezier;
+}
+
+// Transition layer
+.TransitionLayer__Main {
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	width: 100vw;
+	height: 100vh;
+	height: calc(var(--vh, 1vh)*100);
+	background-color: $pomegranate;
+	backface-visibility: hidden;
+	will-change: transform;
+	pointer-events: none;
+	transform: scaleY(0) translateZ(0);
+	transform-origin: top;
+	transition: transform 0.4s $bezier2;
+	@include tabletP {
+		transform: none;
+		opacity: 0;
+		transition: opacity 0.8s $bezier;
+	}
+}
+.TransitionLayer.visible .TransitionLayer__Main {
+	transform: scaleY(1) translateZ(0);
+	transform-origin: bottom;
+	transition: transform 0.78s cubic-bezier(0.55, 0.06, 0.68, 0.19);
+	@include tabletP {
+		transform: none;
+		opacity: 1;
+		transition: opacity 0.8s $bezier;
+	}
+}
+
+.TransitionLayer__Background {
+	position: fixed;
+	top: 0;
+	z-index: 998;
+	width: 100vw;
+	height: 100vh;
+	height: calc(var(--vh, 1vh)*100);
+	background-color: $codGray;
+	pointer-events: none;
+	will-change: opacity;
+	opacity: 0;
+	transition: opacity 0.4s 0.1s $bezier;
+}
+.TransitionLayer.visible .TransitionLayer__Background {
+	opacity: 1;
+	transition: opacity 0.6s $bezier;
+	@include tabletP {
+		display: none;
+	}
+}

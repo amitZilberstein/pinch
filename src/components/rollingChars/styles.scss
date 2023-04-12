@@ -1,0 +1,50 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.RollingChars {
+	&.is-anim-started {
+		.char {
+			animation: charAppearFlicker linear forwards;
+		}
+	}
+}
+
+@keyframes charAppearFlicker {
+	// First
+	0% {
+		opacity: 0.25;
+	}
+	1% {
+		opacity: 1;
+	}
+
+	10% {
+		opacity: 1;
+	}
+	11% {
+		opacity: 0.25;
+	}
+
+	// Second
+	50% {
+		opacity: 0.25;
+	}
+	51% {
+		opacity: 1;
+	}
+
+	60% {
+		opacity: 1;
+	}
+	61% {
+		opacity: 0.25;
+	}
+
+	// Final state
+	99% {
+		opacity: 0.25;
+	}
+	100% {
+		opacity: 1;
+	}
+}

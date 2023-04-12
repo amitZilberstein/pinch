@@ -1,0 +1,44 @@
+// Colors
+$white: #FFFFFF;
+$codGray: #101010;
+$abbey: #4D5159;
+$paleSky: #696F7A;
+$shadyLady: #aeacad;
+$pomegranate: #f7301b;
+$gradientToRight: linear-gradient(to right, #1a46ed, #ff1300);
+$gradientToLeft: linear-gradient(to left, #1a46ed 20%, #ff1300 80%);
+$gradientToBottom: linear-gradient(to bottom, #1a46ed 10%, #ff1300 65%);
+$gradientToTop: linear-gradient(to top, #1a46ed 25%, #ff1300 85%);
+
+// Fonts
+$titleFont: 'Alterra Display';
+$bodyFont: 'Circular Std';
+$bodyFont2: 'Circular Air Pro';
+
+// Beziers curves
+$bezier: cubic-bezier(.215,.61,.355,1);
+$bezier2: cubic-bezier(0.83, 0.01, 0.29, 1);
+
+
+
+// Responsive
+
+// large : 1600px
+// $colWidthLarge: 133.3333333333px;
+$colWidthLarge: 120px;
+// $baseSizeLarge: 11.1111111111px;
+$baseSizeLarge: 10px;
+
+// desktop : 1440px
+$colWidth: 8.3333333333vw; // 120px
+$baseSize: 0.6944444444vw; // 10px
+
+// mobile portrait : 562px
+$colWidthMobile: 12.5vw; // 65.625px
+$baseSizeMobile: 1.7793594306vw; // 10px
+
+
+// Breakpoints responsive
+$large: 1600px;
+$tabletP: 1024px;
+$mobileP: 375px;

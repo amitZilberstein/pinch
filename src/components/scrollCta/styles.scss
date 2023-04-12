@@ -1,0 +1,88 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.ScrollCta {
+	width: cols(1);
+	height: ratio(12);
+	position: relative;
+	cursor: pointer;
+	transition: transform 1s $bezier;
+	transform: none;
+	> img {
+		position: absolute;
+		width: 100%;
+		will-change: transform;
+		opacity: 0;
+		transition: opacity 1.5s $bezier;
+	}
+	> svg {
+		position: absolute;
+		width: ratio(1.2);
+		top: calc(50% - #{ratio(0.282)});
+		left: calc(50% - #{ratio(0.599)});
+		opacity: 0;
+		transform: scale(2);
+		transition: transform 1.5s $bezier, opacity 1.5s $bezier;
+	}
+	&.is-inview {
+		img {
+			opacity: 1;
+			animation: entryRotateScrollCta 1.5s 0s $bezier forwards, rotateScrollCta 10s 1.5s linear infinite;
+		}
+		svg {
+			opacity: 1;
+			transform: none;
+		}
+	}
+	&:hover {
+		transform: scale(0.9);
+		@include tabletP {
+			transform: none;
+		}
+	}
+	@include tabletP {
+		width: colsM(2.75);
+		height: colsM(2.75);
+		> svg {
+			width: ratioM(1.5);
+			top: calc(50% - #{ratioM(0.282)});
+			left: calc(50% - #{ratioM(0.75)});
+		}
+	}
+	@include tabletL {
+		width: colsM(1);
+		height: colsM(1);
+		> svg {
+			width: ratioM(0.7);
+			top: calc(50% - #{ratioM(0.1316)});
+			left: calc(50% - #{ratioM(0.35)});
+		}
+	}
+	@include large {
+		width: colsL(1);
+		height: ratioL(12);
+		> svg {
+			width: ratioL(1.2);
+			top: calc(50% - #{ratioL(0.282)});
+			left: calc(50% - #{ratioL(0.599)});
+		}
+	}
+}
+
+@keyframes entryRotateScrollCta {
+	0% {
+		transform: rotate(360deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}
+
+@keyframes rotateScrollCta {
+	0% {
+		transform: rotate(-360deg);
+	}
+	100% {
+		transform: rotate(0deg);
+	}
+}

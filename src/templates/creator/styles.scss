@@ -1,0 +1,202 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.Creator__Hero {
+	position: relative;
+	height: 100vh;
+	height: calc(var(--vh, 1vh)*100);
+	max-height: ratio(80);
+	@include tabletP {
+		max-height: ratioM(78);
+	}
+	@include tabletL {
+		max-height: auto;
+		height: auto;
+	}
+	@include large {
+		max-height: ratioL(113);
+	}
+}
+
+.Creator__Background {
+	position: absolute;
+	min-width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	overflow: hidden;
+	img {
+		width: 100%;
+	}
+}
+
+.Creator__BackgroundOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+	background: linear-gradient(0deg, rgba(16,16,16,1) 0%, rgba(16,16,16,0.9) 40%, rgba(16,16,16,0.3) 100%);
+}
+
+.Creators__HeroContainer {
+	display: flex;
+	align-items: center;
+	width: cols(10);
+	height: 100%;
+	margin: auto;
+	@include tabletP {
+		flex-direction: column;
+		padding-top: ratioM(20);
+	}
+	@include large {
+		width: colsL(11);
+	}
+}
+
+.Creator__ImgContainer {
+	width: cols(4);
+	min-height: ratio(47);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include appearFadeIn;
+	@include tabletP {
+		width: colsM(6);
+		min-height: auto;
+	}
+	@include large {
+		width: colsL(4);
+		min-height: ratioL(47);
+	}
+	img {
+		width: 100%;
+		border-radius: ratio(1);
+	}
+	&.portrait img {
+		width: cols(3);
+		height: 100%;
+		max-width: ratio(36);
+		@include tabletP {
+			width: colsM(4);
+		}
+		@include large {
+			max-width: ratioL(36);
+		}
+	}
+}
+
+.Creator__Infos {
+	width: cols(5.25);
+	margin-left: cols(0.75);
+	@include tabletP {
+		margin-left: 0;
+		width: colsM(6);
+	}
+	@include large {
+		width: colsL(6);
+		margin-left: colsL(0.75);
+	}
+}
+
+.Creator__Name {
+	font-size: ratio(7.75);
+	font-weight: 300;
+	margin-top: ratio(-2.5);
+	@include appearByLines;
+	@include tabletP {
+		margin-top: ratioM(4);
+		margin-bottom: ratioM(2.5);
+		text-align: center;
+		font-size: ratioM(5);
+	}
+	@include large {
+		font-size: ratioL(8.75);
+		margin-top: ratioL(-2.5);
+	}
+}
+
+.Creator__Description {
+	margin-top: ratio(2);
+	font-family: $bodyFont2;
+	font-size: ratio(1.8);
+	line-height: 1.666;
+	@include appearByLines;
+	@include tabletP {
+		font-size: ratioM(1.8);
+		line-height: 2;
+		text-align: center;
+	}
+	@include large {
+		margin-top: ratioL(2);
+		font-size: ratioL(1.8);
+	}
+}
+
+.Creator__Waitlist {
+	> span {
+		display: block;
+		margin-top: ratio(5);
+		color: $pomegranate;
+		font-size: ratio(1.8);
+		font-weight: 300;
+		margin-bottom: ratio(3);
+		@include appearByLines;
+		@include tabletP {
+			margin-top: ratioM(7.5);
+			margin-bottom: ratioM(3);
+			font-size: ratioM(2);
+		}
+		@include large {
+			margin-top: ratioL(5);
+			font-size: ratioL(1.8);
+			margin-bottom: ratioL(3);
+		}
+	}
+}
+
+.Creator__ScrollCtaMobile {
+	display: none;
+	margin-top: ratioM(10);
+	margin-bottom: ratioM(15);
+	.ScrollCta {
+		margin: auto;
+	}
+	@include tabletP {
+		display: block;
+	}
+	@include tabletL {
+		margin-top: ratioM(3);
+		margin-bottom: ratioM(4.5);
+	}
+	@include large {
+		margin-bottom: ratioL(15);
+	}
+}
+
+.Creator {
+	.IntroText {
+		text-align: center;
+		margin: auto;
+	}
+	.Presentation {
+		margin-top: ratio(10);
+		@include large {
+			margin-top: ratioL(10);
+		}
+	}
+	.Presentation__ScrollCtaContainer .ScrollCta {
+		margin: auto;
+		@include tabletP {
+			display: none;
+		}
+	}
+	.Presentation__Cards {
+		margin-top: ratio(10);
+		@include large {
+			margin-top: 0;
+		}
+	}
+}

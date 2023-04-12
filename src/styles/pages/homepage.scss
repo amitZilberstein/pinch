@@ -1,0 +1,78 @@
+@import '../shared/variables.scss';
+@import '../shared/mixins.scss';
+
+.Homepage {
+	// overflow: hidden;
+}
+
+.Homepage__IntroVideo {
+	position: fixed;
+	z-index: 999;
+	left: calc(50% - #{(100vh * 1.6) * 0.5});
+	top: 0;
+	// width: 100vw;
+	height: 100vh;
+	display: none;
+}
+html.is-loading .Homepage__IntroVideo {
+	display: block;
+	@include tabletP {
+		display: none;
+	}
+}
+html.is-touch.is-loading .Homepage__IntroVideo {
+	display: none;
+}
+
+
+.Homepage__Intro {
+	margin-left: cols(2);
+	padding-top: ratio(25);
+	margin-bottom: ratio(10);
+	.IntroText {
+		margin-bottom: ratio(4.25);
+		line-height: 1.15;
+	}
+	@include tabletP {
+		padding-top: ratioM(28.5);
+		margin-left: colsM(1);
+		margin-bottom: ratioM(12);
+	}
+	@include large {
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: colsL(2);
+		padding-top: ratioL(25);
+		width: colsL(12);
+	}
+}
+
+.Homepage__IntroWaitListLabel {
+	display: none;
+	font-family: $bodyFont2;
+	font-size: ratioM(2);
+	margin-top: ratioM(8);
+	margin-bottom: ratioM(3.5);
+	opacity: 0;
+	transition: opacity 1.6s $bezier;
+	&.is-inview {
+		opacity: 1;
+	}
+	@include tabletP {
+		display: block;
+	}
+}
+
+.Homepage__WaitlistInputContainer {
+	&--Mobile {
+		display: none;
+	}
+	@include tabletP {
+		&--Mobile {
+			display: block;
+		}
+		&--Desktop {
+			display: none;
+		}
+	}
+}

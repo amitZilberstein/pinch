@@ -1,0 +1,40 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.IntroText {
+	font-size: ratio(4.75);
+	font-weight: 300;
+	line-height: 1.1;
+	color: $abbey;
+	width: cols(6);
+	@include appearByLines;
+
+	em {
+		color: $pomegranate;
+	}
+
+	strong {
+		color: $white;
+	}
+
+	@include tabletP {
+		font-size: ratioM(3.9);
+		line-height: 1.2820512821;
+		width: colsM(6);
+	}
+	@include large {
+		font-size: ratioL(4.75);
+		width: colsL(6);
+	}
+}
+
+body.transition-in,
+body.transition-out {
+	.IntroText .word {
+		@for $i from 0 through 20 {
+			&.line-#{$i} > span {
+				transition-delay: 0.85s + (0.125s * $i);
+			}
+		}
+	}
+}

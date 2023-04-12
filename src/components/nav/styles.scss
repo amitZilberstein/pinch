@@ -1,0 +1,302 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.Nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 998;
+	width: cols(10);
+	margin-left: cols(1);
+	margin-top: ratio(7.5);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	opacity: 0;
+	pointer-events: none;
+	min-height: ratio(5.625);
+	&.is-visible {
+		opacity: 1;
+		transition: opacity 0.9s $bezier2;
+	}
+	@include tabletP {
+		width: colsM(6);
+		margin-left: colsM(1);
+		margin-top: ratioM(8.5);
+		min-height: auto;
+	}
+	@include tabletL {
+		margin-top: ratioM(5);
+	}
+	@include large {
+		width: colsL(12);
+		margin-left: 0;
+		margin-top: ratioL(7.5);
+		left: calc(50% - #{colsL(6)});
+		min-height: ratioL(5.625);
+	}
+}
+body.transition-in .Nav {
+	opacity: 0;
+	transition: opacity 0.9s $bezier;
+}
+body.transition-out .Nav {
+	opacity: 1;
+	transition: opacity 1.4s $bezier 0.9s;
+}
+
+.Nav__Logo {
+	width: ratio(7.5);
+	z-index: 2;
+	pointer-events: all;
+	@include tabletP {
+		width: ratioM(9.5);
+	}
+	@include tabletL {
+		width: ratioM(7);
+	}
+	@include large {
+		width: ratioL(7.5);
+	}
+}
+
+.Nav__Right {
+	display: flex;
+	align-items: center;
+	@include tabletP {
+		display: none;
+	}
+}
+
+.Nav__Links {
+	display: flex;
+	margin-right: ratio(5);
+	&:hover .Nav__Link:not(:hover) {
+		opacity: 0.6;
+	}
+	@include large {
+		margin-right: ratioL(5);
+	}
+}
+
+.Nav__Link {
+	text-transform: uppercase;
+	font-family: $titleFont;
+	font-size: ratio(0.85);
+	line-height: ratio(1.1);
+	letter-spacing: 0.25em;
+	overflow: hidden;
+	height: ratio(1);
+	pointer-events: all;
+	transition: opacity 0.3s $bezier;
+	&:not(:first-child) {
+		margin-left: ratio(2);
+	}
+	@include large {
+		font-size: ratioL(1);
+		&:not(:first-child) {
+			margin-left: ratioL(2);
+		}
+	}
+}
+
+.Nav__Burger {
+	pointer-events: all;
+	display: none;
+	@include tabletP {
+		display: block;
+	}
+}
+
+.Nav__BurgerClose {
+	position: fixed;
+	z-index: 999;
+	right: ratioM(11);
+	top: ratioM(8);
+	font-family: $titleFont;
+	font-size: ratioM(1.2);
+	color: $paleSky;
+	text-transform: uppercase;
+	letter-spacing: 0.550em;
+	text-align: right;
+	line-height: 2.8;
+	opacity: 0;
+	transition: opacity 1s $bezier;
+	@include tabletL {
+		top: ratioM(4.5);
+	}
+}
+.Nav__Burger.is-open .Nav__BurgerClose {
+	opacity: 1;
+	transition: opacity 1s $bezier 1s;
+}
+
+
+.Nav__BurgerToggle {
+	pointer-events: all;
+	position: fixed;
+	z-index: 2;
+	right: colsM(1);
+	top: ratioM(8.5);
+	cursor: pointer;
+	@include tabletL {
+		top: ratioM(5);
+	}
+	&:before,
+	&:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		right: 0;
+		height: ratioM(0.2);
+		background-color: $white;
+		transform-origin: right;
+		transform: scaleX(1);
+	}
+	&:after {
+		top: ratioM(2.1);
+		@include tabletL {
+			top: auto;
+			bottom: ratioM(0.2);
+		}
+	}
+	&--Open {
+		width: ratioM(5);
+		height: ratioM(2.25);
+		@include tabletL {
+			width: ratioM(4);
+			height: ratioM(2);
+		}
+		&:before,
+		&:after {
+			transition: transform 0.6s 0.6s $bezier2;
+		}
+	}
+	&--Close {
+		pointer-events: none;
+		width: ratioM(2.25);
+		height: ratioM(2.45);
+		&:before,
+		&:after {
+			width: 133%;
+			transform-origin: top right;
+			transform: rotate(-45deg) scaleX(0);
+			transition: transform 0.6s $bezier2;
+		}
+		&:after {
+			transform: rotate(45deg) scaleX(0);
+			transform-origin: bottom right;
+		}
+	}
+}
+
+.Nav__Burger.is-open {
+	.Nav__BurgerToggle {
+		&--Open {
+			pointer-events: none;
+			&:before,
+			&:after {
+				transform: scaleX(0);
+				transition: transform 0.6s $bezier2;
+			}
+		}
+		&--Close {
+			pointer-events: all;
+			&:before,
+			&:after {
+				transition: transform 0.6s 0.6s $bezier2;
+			}
+			&:before {
+				transform: rotate(-45deg) scaleX(1);
+			}
+			&:after {
+				transform: rotate(45deg) scaleX(1);
+			}
+		}
+	}
+}
+
+.Nav__BurgerContainer {
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	// height: calc(var(--vh, 1vh)*100);
+	background-color:rgba(27,27,27,1);
+	transform: translate3d(0, -100%, 0);
+	transition: transform 1.2s $bezier2;
+	display: flex;
+	align-items: center;
+}
+.Nav__Burger.is-open .Nav__BurgerContainer {
+	transform: none;
+}
+
+.Nav__BurgerLinks {
+	margin-top: ratioM(-5);
+	margin-left: colsM(1);
+	width: colsM(6);
+	opacity: 0;
+	transition: opacity 0.6s $bezier2;
+	@include tabletL {
+		margin-top: ratioM(7);
+	}
+	> a {
+		display: block;
+		width: 100%;
+		padding: ratioM(3.5) 0;
+		font-size: ratioM(4.2);
+		font-weight: 300;
+		color: $paleSky;
+		position: relative;
+		transition: color 1s $bezier;
+		@include tabletL {
+			padding: ratioM(1) 0;
+			font-size: ratioM(2);
+		}
+		&.active {
+			color: $pomegranate;
+		}
+	}
+}
+
+.Nav__Burger.is-open .Nav__BurgerLinks {
+	opacity: 1;
+	transition: opacity 0.8s 0.6s $bezier2;
+}
+
+.Nav .Button {
+	pointer-events: all;
+	transition: background 0.6s $bezier, border-radius 0s 0.6s linear;
+}
+.Nav .Button__Border {
+	transition: stroke-dasharray 1s $bezier2, stroke-dashoffset 1s $bezier2, opacity 0.6s $bezier;
+}
+
+body.on-section-download {
+	.Nav .Button {
+		background-color: rgba(255, 255, 255, 0.2);
+		border-radius: ratio(10);
+		transition: border-radius 0s linear, background 0.6s $bezier;
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.05);
+		}
+	}
+	.Nav .Button__LottieContainer {
+		opacity: 0;
+	}
+}
+
+.Nav__Button--Grey {
+	display: none;
+}
+body.Blog {
+	.Nav__Button--Colored {
+		display: none;
+	}
+	.Nav__Button--Grey {
+		display: flex;
+	}
+}

@@ -1,0 +1,24 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.Blog__List {
+	width: cols(9);
+	margin-top: ratio(15);
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: ratio(10);
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	@include appearFadeIn;
+	@include tabletP {
+		width: colsM(8);
+		margin-top: ratioM(2.5);
+		margin-bottom: 0;
+	}
+	@include large {
+		width: colsL(12);
+		margin-top: ratioL(15);
+		margin-bottom: ratioL(10);
+	}
+}

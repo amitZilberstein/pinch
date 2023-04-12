@@ -1,0 +1,132 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.Button {
+  position: relative;
+	cursor: pointer;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	padding: 0 ratio(3.5);
+	box-sizing: border-box;
+	opacity: 0;
+	&.on-screen {
+		transition: opacity 0.8s $bezier 0.2s;
+		opacity: 1;
+	}
+	@include tabletP {
+		padding: 0 ratioM(3.8);
+	}
+	@include large {
+		padding: 0 ratioL(4.5);
+	}
+}
+
+.Button__Container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	transform: translate3d(0, ratio(0.05), 0);
+	@include large {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.Button__Text {
+	text-transform: uppercase;
+	font-family: $titleFont;
+	font-size: ratio(0.8);
+	line-height: 1;
+	letter-spacing: 0.25em;
+	transition: transform 1s $bezier2;
+	> span {
+		display: block;
+	}
+	.char {
+		display: inline-block;
+		transition: transform 0.8s $bezier2;
+		@for $i from 1 through 30 {
+			&:nth-child(#{$i}) {
+				transition-delay: (0.02 * $i) + s;
+			}
+		}
+	}
+	@include tabletP {
+		font-size: ratioM(1.2);
+		line-height: 1;
+	}
+	@include large {
+		font-size: ratioL(0.85);
+	}
+}
+
+.Button__LottieContainer {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	&--Hover { display: none; }
+}
+
+.Button.is-entry-anim-ended .Button__LottieContainer {
+	&--Entry { display: none; }
+	&--Hover { display: block; }
+}
+
+.Button.secondary {
+	padding: 0 ratio(3);
+	@include tabletP {
+		padding: 0 ratioM(5.5);
+	}
+	@include large {
+		padding: 0 ratioL(3);
+	}
+}
+
+.Button__Arrow {
+	display: none;
+	width: ratio(0.75);
+	will-change: transform;
+	transform: translate3d(0, ratio(-0.05), 0) rotate(-90deg);
+	transition: transform 1s $bezier2;
+	margin-left: ratio(4);
+	@include tabletP {
+		margin-left: ratioM(4);
+		width: ratioM(1);
+	}
+	@include large {
+		width: ratioL(0.9);
+		margin-left: ratioL(4);
+		transform: translate3d(0, ratioL(0.05), 0) rotate(-90deg);
+	}
+}
+.Button.has-arrow {
+	.Button__Arrow {
+		display: block;
+	}
+	@include tabletP {
+		.Button__Arrow {
+			display: none;
+		}
+	}
+}
+
+.Button.Button.has-arrow:hover {
+	.Button__Text {
+		transform: translate3d(10%, 0, 0);
+	}
+	.Button__Arrow {
+		transform: translate3d(-52%, ratio(-0.05), 0) rotate(-90deg);
+		@include large {
+			transform: translate3d(-52%, ratioL(0.05), 0) rotate(-90deg);
+		}
+	}
+}
+
+html.is-touch .Button.has-arrow:hover {
+	.Button__Text,
+	.Button__Arrow {
+		transform: none;
+	}
+}

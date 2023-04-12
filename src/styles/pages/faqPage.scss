@@ -1,0 +1,45 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.FaqPage__Title {
+	width: cols(12);
+	padding-top: ratio(12.5);
+	height: ratio(60);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	.desktop {
+		display: flex;
+		justify-content: center;
+	}
+	.mobile {
+		display: none;
+	}
+	img {
+		width: ratio(78);
+		@include tabletP {
+			width: ratioM(35);
+			margin-left: ratio(-10);
+		}
+		@include large {
+			width: ratioL(78);
+		}
+	}
+	@include tabletP {
+		padding-top: ratioM(20);
+		margin-bottom: ratioM(10);
+		.mobile {
+			display: flex;
+			justify-content: center;
+		}
+		.desktop {
+			display: none;
+		}
+	}
+	@include large {
+		width: colsL(12);
+		padding-top: ratioL(12.5);
+		height: ratioL(60);
+		margin: auto;
+	}
+}

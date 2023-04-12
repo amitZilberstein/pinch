@@ -1,0 +1,307 @@
+@import '../../styles/shared/variables.scss';
+@import '../../styles/shared/mixins.scss';
+
+.ForCreators__Container {
+	@include large {
+		width: colsL(12);
+		margin: auto;
+	}
+}
+
+.ForCreators__Title {
+	width: cols(10);
+	margin: auto;
+	padding-top: ratio(22);
+	img {
+		width: 100%;
+		padding-top: ratio(2);
+	}
+	.AnimatedText {
+		width: 100%;
+	}
+	.mobile {
+		display: none;
+	}
+	@include tabletP {
+		width: 100vw;
+		padding-top: ratioM(21);
+		img {
+			width: 100%;
+		}
+		.mobile {
+			display: block;
+			overflow: hidden;
+		}
+		.desktop {
+			display: none;
+		}
+	}
+	@include large {
+		width: colsL(12);
+		padding-top: ratioL(22);
+	}
+}
+
+.ForCreators__Dot {
+	position: absolute;
+	top: ratio(29);
+	left: cols(8);
+	width: 0;
+	color: $paleSky;
+	font-family: $titleFont;
+	font-size: ratio(0.9);
+	line-height: ratio(1.8);
+	letter-spacing: 0.4em;
+	text-transform: uppercase;
+	@include appearFadeIn;
+	@include tabletP {
+		display: none;
+	}
+	@include large {
+		top: ratioL(29);
+		font-size: ratioL(0.9);
+		line-height: ratioL(1.8);
+	}
+	.ForCreators__DotLine {
+		display: block;
+		white-space: nowrap;
+	}
+	.ForCreators__DotLine:first-child {
+		position: relative;
+		padding-left: ratio(1.9);
+		@include large {
+			padding-left: ratioL(1.9);
+		}
+		&:before {
+			position: absolute;
+			content: '';
+			background-color: $pomegranate;
+			width: ratio(0.8);
+			height: ratio(0.8);
+			left: 0;
+			top: ratio(0.3);
+			opacity: 0;
+			transform: rotate(-270deg);
+			@include large {
+				width: ratioL(0.8);
+				height: ratioL(0.8);
+				top: ratioL(0.3);
+			}
+		}
+	}
+	&.is-inview .ForCreators__DotLine:first-child:before {
+		transform: rotate(0deg);
+		opacity: 1;
+		transition: opacity 1.5s $bezier2 0.5s, transform 1.5s $bezier2 0.5s;
+		animation: flickerDot 1s linear 0.25s forwards;
+	}
+}
+
+.ForCreators__How {
+	margin-top: ratio(15);
+	@include tabletP {
+		margin-top: ratioM(15);
+	}
+	@include large {
+		margin-top: ratioL(15);
+	}
+}
+
+.ForCreators__HowTitle {
+	text-align: center;
+	font-size: ratio(8);
+	font-weight: 300;
+	@include tabletP {
+		font-size: ratioM(7);
+	}
+	@include large {
+		font-size: ratioL(8);
+	}
+}
+
+.ForCreators__HowList {
+	width: cols(8);
+	margin: ratio(15) auto 0;
+	@include tabletP {
+		width: colsM(6);
+		margin: ratioM(13) auto 0;
+	}
+	@include large {
+		width: colsL(8);
+		margin: ratioL(15) auto 0;
+	}
+}
+
+.ForCreators__HowItem {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: ratio(17);
+	&:nth-child(2n) {
+		flex-direction: row-reverse;
+	}
+	@include tabletP {
+		flex-direction: column;
+		&:nth-child(2n) {
+			flex-direction: column;
+		}
+		margin-bottom: ratioM(15);
+	}
+	@include large {
+		margin-bottom: ratioL(17);
+	}
+}
+
+.ForCreators__HowNumber {
+	width: cols(3.5);
+	height: ratio(29);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	> img {
+		height: 100%;
+	}
+	@include tabletP {
+		margin-top: 0;
+		width: colsM(5.5);
+		height: ratioM(35);
+	}
+	@include large {
+		width: colsL(3.5);
+		height: ratioL(29);
+	}
+}
+
+.ForCreators__HowInfos {
+	width: cols(3.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@include tabletP {
+		width: colsM(6);
+	}
+	@include large {
+		width: colsL(3.5);
+	}
+}
+
+.ForCreators__HowInfosContainer {
+	width: cols(2.5);
+	@include tabletP {
+		width: 100%;
+	}
+	@include large {
+		width: colsL(2.5);
+	}
+}
+.ForCreators__HowItem:nth-child(2n) {
+	margin-left: cols(0.25);
+	@include tabletP {
+		margin-left: 0;
+	}
+	@include large {
+		margin-left: colsL(0.25);
+	}
+}
+
+.ForCreators__HowStep {
+	text-transform: uppercase;
+	font-family: $titleFont;
+	font-size: ratio(0.8);
+	letter-spacing: 0.25em;
+	color: $paleSky;
+	padding-left: ratio(1.75);
+	position: relative;
+	@include tabletP {
+		display: none;
+	}
+	@include large {
+		font-size: ratioL(0.8);
+		padding-left: ratioL(1.75);
+	}
+	&:before {
+		position: absolute;
+		content: '';
+		background-color: $pomegranate;
+		width: ratio(0.8);
+		height: ratio(0.8);
+		left: 0;
+		top: ratio(0.1);
+		transform: translate3d(ratio(6), 0, 0) rotate(-270deg);
+		@include large {
+			width: ratioL(0.8);
+			height: ratioL(0.8);
+			top: ratioL(0.1);
+			transform: translate3d(ratioL(6), 0, 0) rotate(-270deg);
+		}
+	}
+	&.is-inview {
+		&:before {
+			transform: translate3d(0, 0, 0) rotate(0deg);
+			transition: opacity 2s $bezier2 0s, transform 2s $bezier2 0s;
+			animation: flickerDot 1s linear 0.25s forwards;
+		}
+		.ForCreators__HowStepLine {
+			opacity: 1;
+			transition: opacity 0.3s $bezier 1s;
+		}
+	}
+}
+
+.ForCreators__HowStepLine {
+	opacity: 0;
+}
+
+.ForCreators__HowItemTitle {
+	margin-top: ratio(1.5);
+	font-size: ratio(3.5);
+	font-weight: 300;
+	@include tabletP {
+		margin-top: ratioM(5);
+		font-size: ratioM(5);
+	}
+	@include large {
+		margin-top: ratioL(1.5);
+		font-size: ratioL(3.5);
+	}
+}
+
+.ForCreators__HowDesc {
+	width: cols(2.25);
+	margin-top: ratio(3);
+	font-family: $bodyFont2;
+	font-size: ratio(1.6);
+	line-height: 1.5;
+	@include tabletP {
+		margin-top: ratioM(3);
+		font-size: ratioM(2.5);
+		width: 100%;
+	}
+	@include large {
+		width: colsL(2.25);
+		margin-top: ratioL(3);
+		font-size: ratioL(1.6);
+	}
+}
+
+.ForCreators__Faq {
+	margin-top: ratio(15);
+	@include large {
+		margin-top: ratioL(15);
+	}
+}
+
+.ForCreators__FaqTitle {
+	text-align: center;
+	font-size: ratio(8);
+	font-weight: 300;
+	margin-bottom: ratio(12);
+	@include tabletP {
+		font-size: ratioM(7);
+		margin-bottom: ratioM(8.5);
+	}
+	@include large {
+		font-size: ratioL(8);
+		margin-bottom: ratioL(12);
+	}
+}
