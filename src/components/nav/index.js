@@ -58,7 +58,7 @@ const Nav = ({ isVisible }) => {
 				<div className="Nav__BurgerToggle Nav__BurgerToggle--Close" onClick={toggleBurger}></div>
 				<div className="Nav__BurgerContainer">
 					<div className="Nav__BurgerLinks">
-						<a href="https://rewards.pinchbanking.com" onClick={toggleBurger}>Rewards</a>
+						<a href="https://rewards.pinchbank.com" onClick={toggleBurger}>Rewards</a>
 						<Link to="/featured-creators" className="is-featured-link" activeClassName="active" onClick={toggleBurger}>
 							Featured Creators
 						</Link>

@@ -17,7 +17,7 @@ const NavLink = ({ to = '', text = '' }) => {
 				className="NavLink"
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}>
-				<a href="https://rewards.pinchbanking.com">{text}</a>
+				<a href="https://rewards.pinchbank.com">{text}</a>
 				<SplitText splitBy="chars" noDelay>
 					<RollingChars isMouseOver={isMouseOver}>{text}</RollingChars>
 				</SplitText>
